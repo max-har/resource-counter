@@ -101,7 +101,7 @@ def transfer(count_data, output_path):
     """Transfer data to excel sheet.
 
     param1: list containing a count values list for each resource category
-    output: None
+    output: none
     """
 # totals column
     for cnt_list in count_data:
@@ -126,7 +126,8 @@ def transfer(count_data, output_path):
 def plotter(path_of_output_file):
     """Read data and plot charts.
 
-    param1:
+    param1: path of output file 
+    output: none
     """
     # read data
     excel_df = read_excel(path_of_output_file, header=0, index_col=0)
@@ -140,8 +141,9 @@ def plotter(path_of_output_file):
 def plot_bar(totals_all, path_of_output_file):
     """Plot bar chart.
 
-    param1:
-    param2:
+    param1: data frame for totals of all cells
+    param2: path of output file
+    output: none
     """
     cmap = mpl.colormaps['Spectral']  # colour map
     totals_all.plot.barh(figsize=(26, 10), stacked=True, cmap=cmap, fontsize=16)
@@ -153,9 +155,10 @@ def plot_bar(totals_all, path_of_output_file):
 def plot_pie(totals_col, totals_row, path_of_output_file):
     """Plots pie charts.
 
-    param1:
-    param2:
-    param3:
+    param1: data frame for totals of all columns
+    param2: data frame for totals of all rows
+    param3: path of output file
+    output: none
     """
     cmap = mpl.colormaps['Spectral']   # colour map
     fig = mpl.pyplot.figure()
