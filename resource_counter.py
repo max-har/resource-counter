@@ -13,12 +13,11 @@ from datetime import date  # today's date
 
 # related third party imports
 import requests  # HTTP library
+import matplotlib as mpl
 from bs4 import BeautifulSoup  # pull data
 from tqdm import tqdm  # progress bar
 from pandas import DataFrame  # tabular data
 from pandas import read_excel
-from matplotlib import pyplot as plt
-from matplotlib import cm
 
 # local application/library specific imports
 from data.resource_lists import all_urls  # 88 URLs
@@ -49,7 +48,7 @@ def welcome():
 |  _ <  __/\__ \ (_) | |_| | | | (_|  __/ |__| (_) | |_| | | | | ||  __/ |
 |_| \_\___||___/\___/ \__,_|_|  \___\___|\____\___/ \__,_|_| |_|\__\___|_|
 
-Max Harder, mail@max-har.de (January 2021)
+Max Harder, mail@max-har.de (July 2023)
 ''')
 
 def file_management():
@@ -144,12 +143,12 @@ def plot_bar(totals_all, path_of_output_file):
     param1:
     param2:
     """
-    cmap = cm.get_cmap('Spectral')  # colour map
+    cmap = mpl.colormaps['Spectral']  # colour map
     totals_all.plot.barh(figsize=(26, 10), stacked=True, cmap=cmap, fontsize=16)
-    plt.suptitle('Resource Categories per Resource Type', fontsize=20)
-    plt.legend(fontsize=16)
-    plt.tight_layout()
-    plt.savefig(path_of_output_file[:-5]+'_bar.png', format='png')
+    mpl.pyplot.suptitle('Resource Categories per Resource Type', fontsize=20)
+    mpl.pyplot.legend(fontsize=16)
+    mpl.pyplot.tight_layout()
+    mpl.pyplot.savefig(path_of_output_file[:-5]+'_bar.png', format='png')
 
 def plot_pie(totals_col, totals_row, path_of_output_file):
     """Plots pie charts.
@@ -158,21 +157,21 @@ def plot_pie(totals_col, totals_row, path_of_output_file):
     param2:
     param3:
     """
-    cmap = cm.get_cmap('Spectral')   # colour map
-    fig = plt.figure()
+    cmap = mpl.colormaps['Spectral']   # colour map
+    fig = mpl.pyplot.figure()
     # subplot 1
     ax1 = fig.add_subplot(121)  # nrows, ncols, and index
     totals_col.plot.pie(figsize=(26, 10), legend=False, cmap=cmap, fontsize=16)
     ax1.set_title('Resource Categories', fontsize=20)
-    plt.axis('off')
+    mpl.pyplot.axis('off')
     # subplot 2
     ax2 = fig.add_subplot(122)  # nrows, ncols, and index
     totals_row.plot.pie(figsize=(26, 10), legend=False, cmap=cmap, fontsize=16)
     ax2.set_title('Resource Types', fontsize=20)
-    plt.axis('off')
+    mpl.pyplot.axis('off')
     # save
-    plt.tight_layout()
-    plt.savefig(path_of_output_file[:-5]+'_pie.png', format='png')
+    mpl.pyplot.tight_layout()
+    mpl.pyplot.savefig(path_of_output_file[:-5]+'_pie.png', format='png')
 
 
 if __name__ == '__main__':
