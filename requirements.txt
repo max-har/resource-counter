@@ -1,0 +1,5 @@
+beautifulsoup4==4.10.0
+matplotlib==3.7.2
+pandas==1.5.2
+Requests==2.31.0
+tqdm==4.57.0
